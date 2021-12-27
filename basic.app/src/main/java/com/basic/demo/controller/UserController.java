@@ -24,8 +24,7 @@ public class UserController {
     private AccountRepositoryImpl accountRepository;
 
     @PostMapping("/create")
-    public String createUser(@ModelAttribute("signInAccountDto") SignInAccountDto signInAccountDto,
-                             Model model, RedirectAttributes redirectAttributes) {
+    public String createUser(@ModelAttribute("signInAccountDto") SignInAccountDto signInAccountDto) {
         Account newAccount = new Account(signInAccountDto.getAccountUsername(),
                 new BCryptPasswordEncoder().encode(signInAccountDto.getAccountPassword()),
                 signInAccountDto.getAccountEmail());

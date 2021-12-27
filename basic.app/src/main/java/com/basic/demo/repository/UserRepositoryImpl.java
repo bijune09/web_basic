@@ -12,6 +12,7 @@ public class UserRepositoryImpl {
     @Autowired
     private IUserRepository iUserRepository;
 
+
     public void createUser(User user){
         this.iUserRepository.save(user);
     }

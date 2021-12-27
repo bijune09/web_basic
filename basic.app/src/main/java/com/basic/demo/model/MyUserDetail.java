@@ -55,4 +55,14 @@ public class MyUserDetail implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public int getAccountId(){
+        return this.account.getAccountId();
+    }
+
+    public User getUser(){
+        return this.account.getUser();
+    }
+
+
 }
