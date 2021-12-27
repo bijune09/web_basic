@@ -23,4 +23,7 @@ public class Comment {
     @JoinColumn(name = "user_id", referencedColumnName = "userId")
     private User user;
 
+    @ManyToOne(targetEntity = Entry.class)
+    @JoinColumn(name = "entry_id", referencedColumnName = "entryId")
+    private Entry entry;
 }

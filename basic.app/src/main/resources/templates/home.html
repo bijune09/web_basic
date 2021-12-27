@@ -32,7 +32,7 @@
 <div sec:authorize="isAuthenticated()">
     <h2>Hello <span sec:authentication="principal.username"></span></h2>
     <h2>Hello <span sec:authentication="principal.accountId"></span></h2>
-    <span id="idUser" >[[${#request.userPrincipal.principal.user}]]</span>
+    <span id="idUser">[[${#request.userPrincipal.principal.user}]]</span>
 
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3" th:fragment="navbar">
@@ -109,14 +109,18 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                     <div class="container" th:each="entry: ${entryPage}">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" alt="..." th:src="${entry.entryImg}">
-                            <div class="card-body">
-                                <h5 class="card-title" th:text="${entry.entryTitle}"></h5>
-                                <p class="card-text" th:text="${entry.entryBody}"></p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <form th:action="@{/comments/create}" method="post">
+                            <div class="card" style="width: 18rem;">
+
+                                <img class="card-img-top" alt="..." th:src="${entry.entryImg}">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${entry.entryTitle}"></h5>
+                                    <p class="card-text" th:text="${entry.entryBody}"></p>
+                                    <textarea name="comment" rows="3"></textarea>
+                                    <button class="btn btn-primary">Comment</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                 </div>

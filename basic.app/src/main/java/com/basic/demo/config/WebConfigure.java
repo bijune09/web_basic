@@ -40,7 +40,7 @@ public class WebConfigure extends WebSecurityConfigurerAdapter {
                 /*Login thanh cong se chuyen huong ve URL man hinh hien tai,neu truy cap truc tiep /login thi login thanh cong se chuyen huong ve /student */
                 .defaultSuccessUrl("/").permitAll().
                 and().authorizeRequests().antMatchers("/**","/user/create").permitAll().
-                and().authorizeRequests().antMatchers("/entry**").hasRole("USER")
+                and().authorizeRequests().antMatchers("/entry**","/comments/**").hasRole("USER")
                 .anyRequest().authenticated();
             /* Tất cả request gởi lên server không cần thực hiện xác thực*/
 //                    .authorizeRequests().anyRequest().permitAll();
