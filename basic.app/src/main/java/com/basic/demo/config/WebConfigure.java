@@ -34,16 +34,19 @@ public class WebConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
         http.csrf().disable()
                 .formLogin()
                 .loginPage("/login").permitAll()
                 /*Login thanh cong se chuyen huong ve URL man hinh hien tai,neu truy cap truc tiep /login thi login thanh cong se chuyen huong ve /student */
                 .defaultSuccessUrl("/").permitAll().
-                and().authorizeRequests().antMatchers("/**","/user/create").permitAll().
-                and().authorizeRequests().antMatchers("/entry**","/comments/**").hasRole("USER")
+                and().logout().logoutSuccessUrl("/").
+                and().authorizeRequests().antMatchers("/**","/user/create","logout").permitAll().
+                and().authorizeRequests().antMatchers("/entry**","/comments/**","/user/**").hasRole("USER")
                 .anyRequest().authenticated();
             /* Tất cả request gởi lên server không cần thực hiện xác thực*/
 //                    .authorizeRequests().anyRequest().permitAll();
+
 
         http.authorizeRequests().and().rememberMe().tokenRepository(this.persistentTokenRepository())
                 .tokenValiditySeconds(60 * 60 * 2);

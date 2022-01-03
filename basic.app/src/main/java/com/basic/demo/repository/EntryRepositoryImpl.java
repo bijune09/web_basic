@@ -23,4 +23,12 @@ public class EntryRepositoryImpl {
     public Page<Entry> getAll(Pageable pageable){
         return this.entryRepository.findAll(pageable);
     }
+
+    public Entry findById(Integer id){
+        return this.entryRepository.findById(id).orElse(null);
+    }
+
+    public Page<Entry> findAllByUser(Integer id,Pageable pageable){
+        return this.entryRepository.findAllByUser(id,pageable);
+    }
 }

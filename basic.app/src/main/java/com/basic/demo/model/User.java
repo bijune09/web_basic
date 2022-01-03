@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Comment> user;
+
+    @OneToMany(mappedBy = "follower")
+    private List<Follow> userList;
 
     public User(String userName, String userBirthday, Account userAccount) {
         this.userName = userName;

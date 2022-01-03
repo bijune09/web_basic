@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a class="btn btn-default btn-sm tip btn-responsive" title=""
+   data-original-title="Send message"
+   th:href="@{/user/unfollow/{id}(id=${userProfile.userId})}" th:fragment="unfollow"><span
+        class="glyphicon glyphicon-minus glyphicon glyphicon-white"></span> Unfollow
+</a>
+
+<a class="btn btn-default btn-sm tip btn-responsive" title=""
+   data-original-title="Add to friends"
+   th:href="@{/user/follow/{id}(id=${userProfile.userId})}" th:fragment="doFollow"><span
+        class="glyphicon glyphicon-plus glyphicon glyphicon-white"></span> Follow
+</a>
+</body>
+</html>

@@ -16,4 +16,9 @@ public class UserRepositoryImpl {
     public void createUser(User user){
         this.iUserRepository.save(user);
     }
+
+    public User findById(Integer id){
+        return this.iUserRepository.findById(id).orElse(null);
+    }
 }
+

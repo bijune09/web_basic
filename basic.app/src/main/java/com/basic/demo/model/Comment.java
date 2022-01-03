@@ -26,4 +26,10 @@ public class Comment {
     @ManyToOne(targetEntity = Entry.class)
     @JoinColumn(name = "entry_id", referencedColumnName = "entryId")
     private Entry entry;
+
+    public Comment(String commentBody, User user, Entry entry) {
+        this.commentBody = commentBody;
+        this.user = user;
+        this.entry = entry;
+    }
 }

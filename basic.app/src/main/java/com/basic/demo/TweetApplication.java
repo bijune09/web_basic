@@ -17,8 +17,6 @@ public class TweetApplication {
         SpringApplication.run(TweetApplication.class, args);
         System.out.println(new BCryptPasswordEncoder().encode("123456"));
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        System.out.println(dateFormat.format(date));
     }
 
 }

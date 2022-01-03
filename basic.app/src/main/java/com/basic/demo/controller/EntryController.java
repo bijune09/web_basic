@@ -38,7 +38,7 @@ public class EntryController {
     }
 
     @PostMapping("/createEntry")
-    public String createEntry(@ModelAttribute("entry") Entry entry,
+    public String createEntry(@ModelAttribute("newEntry") Entry entry,
                               @RequestParam("image") MultipartFile multipartFile,
                               @AuthenticationPrincipal MyUserDetail userDetail) throws IOException {
         Cloudinary cloudinary = cloudinaryDto.config();
@@ -47,10 +47,11 @@ public class EntryController {
         entry.setEntryImg(filename);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        entry.setCreateDate(String.valueOf(date));
+//        entry.setCreateDate(String.valueOf(date));
+        entry.setCreateDate(date);
         entry.setUser(userDetail.getUser());
         this.entryRepository.createEntry(entry);
-        return "home";
+        return "redirect:/";
     }
 
 
